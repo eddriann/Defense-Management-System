@@ -1,0 +1,29 @@
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+railway-db.env
+
+# Local Docker setup (keep out of the GitHub upload)
+/Dockerfile
+/.dockerignore
+/DOCKER.md
+/docker/
+/compose.yaml
+/docker-compose*.yml
+/docker-compose*.yaml
+
+# Uploaded manuscript files and other runtime uploads
+/storage/manuscripts/*
+!/storage/manuscripts/.htaccess
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
