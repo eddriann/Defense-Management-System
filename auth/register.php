@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $old['email'] = $email = $post_string('email');
     $old['username'] = $username = $post_string('username');
     $password = is_string($_POST['password'] ?? null) ? $_POST['password'] : '';
+    $confirm_password = is_string($_POST['confirm_password'] ?? null) ? $_POST['confirm_password'] : '';
     $old['program'] = $program = $post_string('program');
     $old['year_level'] = $year_level = $post_string('year_level');
     $adviser_id_value = $post_string('adviser_id');
@@ -62,6 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (strlen($password) < 8 || strlen($password) > 72) {
         $field_errors['password'] = 'Use a password between 8 and 72 characters.';
+    }
+    if ($password !== $confirm_password) {
+        $field_errors['confirm_password'] = 'The password and confirmation do not match.';
     }
     if (!in_array($program, $programs, true)) {
         $field_errors['program'] = 'Select your program.';
@@ -156,72 +160,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration | Defense Management System</title>
     <link rel="stylesheet" href="../assets/css/dashboard.css?v=<?= filemtime(__DIR__ . '/../assets/css/dashboard.css') ?>&amp;rev=style-20261115-3">
-    <link rel="stylesheet" href="../assets/css/login.css?v=11&amp;rev=style-20261115-3">
+    <link rel="stylesheet" href="../assets/css/register.css?v=3">
     <link rel="icon" type="image/png" href="../assets/logo/favicon.png?v=20261115">
 </head>
 
-<body class="login-page">
-    <main class="login-layout">
-        <section class="login-welcome" aria-label="Defense Management System">
-            <img class="welcome-logo" src="../assets/logo/logo.jpg" alt="Computer Arts and Technological College, Inc.">
-            <div class="welcome-copy">
-                <h1>Student Registration</h1>
-                <p>Create an account to access your defense workspace.</p>
+<body class="registration-page">
+    <main class="registration-shell">
+        <header class="registration-header">
+            <a class="registration-brand" href="../index.php">
+                <img src="../assets/logo/logo.jpg" alt="">
+                <span>
+                    <strong>Defense Management System</strong>
+                    <small>Thesis and Capstone Portal</small>
+                </span>
+            </a>
+            <a class="registration-signin-link" href="../index.php">Back to sign in</a>
+        </header>
+        <section class="registration-panel" aria-labelledby="registration-title">
+            <div class="registration-heading">
+                <span class="registration-eyebrow">STUDENT PORTAL</span>
+                <h1 id="registration-title">Create your student account</h1>
+                <p>Enter your details to get started with your defense workspace.</p>
             </div>
-            <p class="login-footer">Computer Arts and Technological College, Inc.</p>
+            <form class="registration-form" action="register.php" method="post">
+                <?php if ($error !== ''): ?>
+                    <p class="registration-error" role="alert"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
+                <?php endif; ?>
+                <?= csrf_field() ?>
+                <label for="full_name">Full name
+                    <input type="text" name="full_name" id="full_name" maxlength="150" autocomplete="name" value="<?= htmlspecialchars($old['full_name'], ENT_QUOTES, 'UTF-8') ?>" required>
+                    <?php if (isset($field_errors['full_name'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['full_name'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="email">Email
+                    <input type="email" name="email" id="email" maxlength="100" autocomplete="email" value="<?= htmlspecialchars($old['email'], ENT_QUOTES, 'UTF-8') ?>" required>
+                    <?php if (isset($field_errors['email'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['email'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="username">Username
+                    <input type="text" name="username" id="username" maxlength="50" autocomplete="username" value="<?= htmlspecialchars($old['username'], ENT_QUOTES, 'UTF-8') ?>" required>
+                    <?php if (isset($field_errors['username'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['username'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="password">Password
+                    <input type="password" name="password" id="password" minlength="8" maxlength="72" autocomplete="new-password" required>
+                    <small class="registration-help">Use 8 to 72 characters.</small>
+                    <?php if (isset($field_errors['password'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['password'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="confirm_password">Confirm password
+                    <input type="password" name="confirm_password" id="confirm_password" minlength="8" maxlength="72" autocomplete="new-password" required <?= isset($field_errors['confirm_password']) ? 'aria-invalid="true" aria-describedby="confirm-password-error"' : '' ?>>
+                    <?php if (isset($field_errors['confirm_password'])): ?><small id="confirm-password-error" class="registration-field-error"><?= htmlspecialchars($field_errors['confirm_password'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="program">Program
+                    <select name="program" id="program" required>
+                        <option value="" disabled <?= $old['program'] === '' ? 'selected' : '' ?>>Select your program</option>
+                        <option value="BS Computer Science" <?= $old['program'] === 'BS Computer Science' ? 'selected' : '' ?>>Computer Science</option>
+                        <option value="BS Information Technology" <?= $old['program'] === 'BS Information Technology' ? 'selected' : '' ?>>Information Technology</option>
+                    </select>
+                    <?php if (isset($field_errors['program'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['program'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="year_level">Year level
+                    <select name="year_level" id="year_level" required>
+                        <option value="" disabled <?= $old['year_level'] === '' ? 'selected' : '' ?>>Select your year level</option>
+                        <option value="3rd Year" <?= $old['year_level'] === '3rd Year' ? 'selected' : '' ?>>3rd Year</option>
+                        <option value="4th Year" <?= $old['year_level'] === '4th Year' ? 'selected' : '' ?>>4th Year</option>
+                    </select>
+                    <?php if (isset($field_errors['year_level'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['year_level'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <label for="adviser_id">Student adviser
+                    <select name="adviser_id" id="adviser_id" required <?= $adviser_ids ? '' : 'disabled' ?>>
+                        <option value="" disabled <?= $old['adviser_id'] === 0 ? 'selected' : '' ?>>Select an active adviser</option>
+                        <?php foreach ($advisers as $adviser): ?>
+                            <option value="<?= (int)$adviser['user_id'] ?>" <?= $old['adviser_id'] === (int)$adviser['user_id'] ? 'selected' : '' ?>><?= htmlspecialchars($adviser['full_name'], ENT_QUOTES, 'UTF-8') ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php if (isset($field_errors['adviser_id'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['adviser_id'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
+                </label>
+                <input type="submit" value="Create student account" <?= $adviser_ids ? '' : 'disabled' ?>>
+                <p class="registration-note">Student accounts only. Adviser and panel accounts are managed by an administrator.</p>
+            </form>
         </section>
-        <form class="login-card card shadow-lg" action="register.php" method="post">
-            <h2>Create your account</h2>
-            <p class="login-intro">Register with your student program and adviser details.</p>
-            <?php if ($error !== ''): ?>
-                <p class="login-error" role="alert"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
-            <?php endif; ?>
-            <?= csrf_field() ?>
-            <label for="full_name">Full name
-                <input type="text" name="full_name" id="full_name" maxlength="150" autocomplete="name" value="<?= htmlspecialchars($old['full_name'], ENT_QUOTES, 'UTF-8') ?>" required>
-                <?php if (isset($field_errors['full_name'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['full_name'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <label for="email">Email
-                <input type="email" name="email" id="email" maxlength="100" autocomplete="email" value="<?= htmlspecialchars($old['email'], ENT_QUOTES, 'UTF-8') ?>" required>
-                <?php if (isset($field_errors['email'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['email'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <label for="username">Username
-                <input type="text" name="username" id="username" maxlength="50" autocomplete="username" value="<?= htmlspecialchars($old['username'], ENT_QUOTES, 'UTF-8') ?>" required>
-                <?php if (isset($field_errors['username'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['username'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <label for="password">Password
-                <input type="password" name="password" id="password" minlength="8" maxlength="72" autocomplete="new-password" required>
-                <small class="registration-help">Use 8 to 72 characters.</small>
-                <?php if (isset($field_errors['password'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['password'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <label for="program">Program
-                <select name="program" id="program" required>
-                    <option value="" disabled <?= $old['program'] === '' ? 'selected' : '' ?>>Select your program</option>
-                    <option value="BS Computer Science" <?= $old['program'] === 'BS Computer Science' ? 'selected' : '' ?>>Computer Science</option>
-                    <option value="BS Information Technology" <?= $old['program'] === 'BS Information Technology' ? 'selected' : '' ?>>Information Technology</option>
-                </select>
-                <?php if (isset($field_errors['program'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['program'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <label for="year_level">Year level
-                <select name="year_level" id="year_level" required>
-                    <option value="" disabled <?= $old['year_level'] === '' ? 'selected' : '' ?>>Select your year level</option>
-                    <option value="3rd Year" <?= $old['year_level'] === '3rd Year' ? 'selected' : '' ?>>3rd Year</option>
-                    <option value="4th Year" <?= $old['year_level'] === '4th Year' ? 'selected' : '' ?>>4th Year</option>
-                </select>
-                <?php if (isset($field_errors['year_level'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['year_level'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <label for="adviser_id">Student adviser
-                <select name="adviser_id" id="adviser_id" required <?= $adviser_ids ? '' : 'disabled' ?>>
-                    <option value="" disabled <?= $old['adviser_id'] === 0 ? 'selected' : '' ?>>Select an active adviser</option>
-                    <?php foreach ($advisers as $adviser): ?>
-                        <option value="<?= (int)$adviser['user_id'] ?>" <?= $old['adviser_id'] === (int)$adviser['user_id'] ? 'selected' : '' ?>><?= htmlspecialchars($adviser['full_name'], ENT_QUOTES, 'UTF-8') ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <?php if (isset($field_errors['adviser_id'])): ?><small class="registration-field-error"><?= htmlspecialchars($field_errors['adviser_id'], ENT_QUOTES, 'UTF-8') ?></small><?php endif; ?>
-            </label>
-            <input type="submit" value="Create student account" <?= $adviser_ids ? '' : 'disabled' ?>>
-            <p class="login-register-link"><a href="../index.php">Back to sign in</a></p>
-        </form>
     </main>
 </body>
 
