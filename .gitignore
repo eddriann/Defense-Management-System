@@ -5,15 +5,6 @@
 !.env.*.example
 railway-db.env
 
-# Local Docker setup (keep out of the GitHub upload)
-/Dockerfile
-/.dockerignore
-/DOCKER.md
-/docker/
-/compose.yaml
-/docker-compose*.yml
-/docker-compose*.yaml
-
 # Uploaded manuscript files and other runtime uploads
 /storage/manuscripts/*
 !/storage/manuscripts/.htaccess

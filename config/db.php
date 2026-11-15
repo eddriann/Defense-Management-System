@@ -1,11 +1,11 @@
 <?php
 
 
-$host = getenv('DB_HOST') ?: 'yamanote.proxy.rlwy.net';
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: 'phydVwNEnaBxuXuqlLTYjFCccPipzWdK';
-$db = getenv('DB_NAME') ?: 'railway';
-$port_value = getenv('DB_PORT') ?: 37444;
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
+$db = getenv('DB_NAME');
+$port = getenv('DB_PORT');
 
 
 

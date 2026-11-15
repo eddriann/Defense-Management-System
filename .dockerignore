@@ -1,0 +1,21 @@
+# Secrets and local environment files
+.env
+.env.*
+railway-db.env
+
+# Git and local editor files
+.git
+.gitignore
+.vscode/
+.idea/
+
+# Local overrides and runtime uploads
+docker-compose.override.yml
+/storage/manuscripts/*
+!/storage/manuscripts/.htaccess
+
+# Local dependencies, logs, and OS metadata
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
