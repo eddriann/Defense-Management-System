@@ -918,7 +918,7 @@
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
     .module-content {
         padding: 20px 16px;
         overflow-x: hidden;
@@ -1097,6 +1097,14 @@
     box-shadow: none;
 }
 
+.module-content > table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: normal;
+}
+
 .module-content table th,
 .module-content .report-table th {
     padding: 12px 14px;
@@ -1161,7 +1169,7 @@
     color: #064b80 !important;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
     .module-content > table {
         display: block;
         width: max-content;
@@ -1175,5 +1183,29 @@
     .module-content .table-wrap > table {
         width: max-content;
         min-width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .module-content > form,
+    .module-content > form[action],
+    .module-content > .form-card {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .module-content > .filter-form,
+    .user-management-card .filter-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: stretch;
+        padding: 12px;
+    }
+
+    .module-content .filter-form label,
+    .module-content .filter-form input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+    .module-content .filter-form select {
+        width: 100%;
+        min-width: 0;
     }
 }

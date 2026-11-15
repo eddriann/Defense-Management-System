@@ -55,8 +55,9 @@ $initials = substr($initials, 0, 2);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Defense Management System</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=<?= filemtime(__DIR__ . '/../assets/css/dashboard.css') ?>&amp;rev=style-20261112-2">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=<?= filemtime(__DIR__ . '/../assets/css/dashboard.css') ?>&amp;rev=style-20261115-2">
     <script src="../assets/js/dashboard.js" defer></script>
+    <link rel="icon" type="image/png" href="../assets/logo/favicon.png?v=20261115">
 </head>
 
 <body>

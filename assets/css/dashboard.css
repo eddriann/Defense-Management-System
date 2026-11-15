@@ -636,7 +636,7 @@ a {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .app-wrapper {
     display: block;
   }
@@ -931,7 +931,7 @@ body {
   background: var(--workspace-blue-dark);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .main-content,
   .admin-dashboard,
   .adviser-dashboard,

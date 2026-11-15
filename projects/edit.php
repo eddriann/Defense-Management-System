@@ -81,9 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Project</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?rev=style-20261112-2">
-    <link rel="stylesheet" href="../assets/css/modules.css?rev=style-20261112-2">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?rev=style-20261115-2">
+    <link rel="stylesheet" href="../assets/css/modules.css?rev=style-20261115-2">
     <script src="../assets/js/dashboard.js" defer></script>
+    <link rel="icon" type="image/png" href="../assets/logo/favicon.png?v=20261115">
 </head>
 
 <body>

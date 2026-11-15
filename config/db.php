@@ -1,10 +1,10 @@
 <?php
 
 
-$host = getenv('DB_HOST');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASS');
-$db = getenv('DB_NAME');
+$host = getenv('DB_HOST') ?: "localhost";
+$user = getenv('DB_USER') ?: "root";
+$pass = getenv('DB_PASS') ?: "";
+$db = getenv('DB_NAME') ?: "defense_management_system";
 $port = (int) (getenv('DB_PORT') ?: 3306);
 
 

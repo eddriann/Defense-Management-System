@@ -226,7 +226,7 @@ body.login-page::after {
   font-weight: 650;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   body.login-page {
     padding: 16px;
   }
@@ -414,7 +414,7 @@ body.login-page {
   color: rgba(255, 255, 255, 0.82);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   body.login-page {
     padding: 22px 16px;
     background-attachment: scroll;
