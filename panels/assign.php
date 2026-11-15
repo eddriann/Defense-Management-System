@@ -295,8 +295,8 @@ $panel_seat_count = (int)$chairperson_assigned + $panel_member_count;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Assignment</title>
-    <link rel="stylesheet" href="../assets/css/dashboard.css?rev=style-20261115-2">
-    <link rel="stylesheet" href="../assets/css/modules.css?rev=style-20261115-2">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?rev=style-20261115-3">
+    <link rel="stylesheet" href="../assets/css/modules.css?rev=style-20261115-3">
     <script src="../assets/js/dashboard.js" defer></script>
     <link rel="icon" type="image/png" href="../assets/logo/favicon.png?v=20261115">
 </head>

@@ -81,7 +81,7 @@ mysqli_stmt_close($stmt);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Defense Schedules</title><link rel="stylesheet" href="../assets/css/dashboard.css?rev=style-20261115-2"><link rel="stylesheet" href="../assets/css/modules.css?rev=style-20261115-2"><script src="../assets/js/dashboard.js" defer></script><link rel="icon" type="image/png" href="../assets/logo/favicon.png?v=20261115"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Defense Schedules</title><link rel="stylesheet" href="../assets/css/dashboard.css?rev=style-20261115-3"><link rel="stylesheet" href="../assets/css/modules.css?rev=style-20261115-3"><script src="../assets/js/dashboard.js" defer></script><link rel="icon" type="image/png" href="../assets/logo/favicon.png?v=20261115"></head>
 <body>
     <?php require __DIR__ . '/../includes/module_page_start.php'; ?>
     <h1>Defense Schedules</h1>

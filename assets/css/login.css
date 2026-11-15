@@ -462,3 +462,72 @@ body.login-page {
     padding: 22px;
   }
 }
+
+.login-card input[type="email"],
+.login-card select {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 9px;
+  padding: 12px 14px;
+  border: 1px solid #cbd6e2;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #172b4d;
+  font: inherit;
+  font-size: 14px;
+}
+
+.login-card input[type="email"]:focus,
+.login-card select:focus {
+  border-color: #0176d3;
+  outline: 3px solid rgba(1, 118, 211, 0.15);
+}
+
+.login-card input[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.registration-help,
+.registration-field-error {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+.registration-help {
+  color: #61758a;
+}
+
+.registration-field-error {
+  color: #b42318;
+}
+
+.login-success {
+  margin: 0 0 20px;
+  padding: 11px 14px;
+  border: 1px solid #b7e3c5;
+  border-radius: 8px;
+  background: #edfaf1;
+  color: #187044;
+  font-size: 13px;
+}
+
+.login-register-link {
+  margin: 20px 0 0;
+  color: #61758a;
+  font-size: 13px;
+  text-align: center;
+}
+
+.login-register-link a {
+  color: #075b9c;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
