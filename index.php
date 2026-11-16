@@ -24,7 +24,10 @@ if ($message === '0') {
 <body class="login-page">
   <main class="login-layout">
     <section class="login-welcome" aria-label="Defense Management System">
-      <img class="welcome-logo" src="assets/logo/logo.jpg" alt="Computer Arts and Technological College, Inc.">
+      <div class="welcome-brand">
+        <img class="welcome-logo" src="assets/logo/logo.jpg" alt="Computer Arts and Technological College, Inc.">
+        <p class="welcome-school-name">Computer Arts and Technological College, Inc.</p>
+      </div>
       <div class="welcome-copy">
         <h1>Defense Management System</h1>
         <p>Thesis and Capstone Portal</p>
