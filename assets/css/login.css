@@ -74,7 +74,12 @@ body.login-page::after {
   justify-content: center;
   padding: 20px 0 40px;
 }
-
+.welcome-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
 .welcome-logo {
   width: clamp(100px, 12vw, 160px);
   aspect-ratio: 1;
