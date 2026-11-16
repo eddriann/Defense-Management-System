@@ -94,7 +94,14 @@ body.login-page::after {
   border-radius: 5%;
   box-shadow: 0 12px 35px rgba(0, 30, 95, 0.24);
 }
-
+.welcome-school-name {
+  max-width: 260px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(16px, 1.7vw, 22px);
+  font-weight: 800;
+  line-height: 1.35;
+}
 .welcome-copy h1 {
   margin: 0;
   color: #fff;
