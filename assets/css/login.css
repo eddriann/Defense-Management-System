@@ -80,6 +80,10 @@ body.login-page::after {
   gap: 16px;
   margin-bottom: 24px;
 }
+.welcom-brand p{
+  font-size: 24px;
+  font-weight: Bold;
+}
 .welcome-logo {
   width: clamp(100px, 12vw, 160px);
   aspect-ratio: 1;
