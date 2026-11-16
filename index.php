@@ -32,7 +32,6 @@ if ($message === '0') {
         <h1>Defense Management System</h1>
         <p>Thesis and Capstone Portal</p>
       </div>
-      <p class="login-footer">Computer Arts and Technological College, Inc.</p>
     </section>
     <form class="login-card card shadow-lg" action="auth/login.php" method="post">
       <h2>Welcome back</h2>
